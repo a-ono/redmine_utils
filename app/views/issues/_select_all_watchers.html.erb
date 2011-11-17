@@ -1,0 +1,16 @@
+<%= javascript_include_tag 'jquery-1.7.min.js', :plugin => 'redmine_utils' %>
+
+<script type="text/javascript">
+  jQuery.noConflict();
+  jQuery(document).ready(function($) {
+    var form = $("#watchers_form");
+    var watchers = form.find(":checkbox");
+    var checked = false;
+
+    var all = $('<input type="checkbox"/>').change(function() {
+      watchers.attr("checked", this.checked);
+    });
+
+    form.prepend(all, $("<span/>").css("font-weight", "bold").text("<%= I18n.t(:select_all) %>"), "<br/>");
+  });
+</script>
