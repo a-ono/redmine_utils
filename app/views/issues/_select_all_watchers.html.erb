@@ -1,9 +1,13 @@
 <%= javascript_tag do %>
   $(function() {
+    if ($("#select_all_watchers").length) return;
+
     var form = $("#watchers_form");
     var watchers = form.find(":checkbox");
 
-    var all = $('<input type="checkbox"/>').change(function() {
+    var all = $('<input/>').attr({
+      id: "select_all_watchers", type: "checkbox"
+    }).change(function() {
       watchers.attr("checked", this.checked);
     });
 
